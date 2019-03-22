@@ -17,8 +17,8 @@ class RefreshTokenGrantService extends Oauth2ClientGrantServiceBase {
       $newAccessToken = $provider->getAccessToken('refresh_token', [
         'refresh_token' => $accessToken->getRefreshToken(),
       ]);
-
       $this->storeAccessToken($clientId, $newAccessToken);
+      return $newAccessToken;
     }
   }
 

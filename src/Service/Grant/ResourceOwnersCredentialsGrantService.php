@@ -21,8 +21,8 @@ class ResourceOwnersCredentialsGrantService extends Oauth2ClientGrantServiceBase
         'username' => $client->getUsername(),
         'password' => $client->getPassword(),
       ]);
-
       $this->storeAccessToken($clientId, $accessToken);
+      return $accessToken;
     }
     catch (IdentityProviderException $e) {
       // Failed to get the access token.

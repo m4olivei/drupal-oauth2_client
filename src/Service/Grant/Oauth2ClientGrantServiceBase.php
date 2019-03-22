@@ -9,6 +9,7 @@ use Drupal\oauth2_client\PluginManager\Oauth2ClientPluginManagerInterface;
 use Drupal\oauth2_client\Service\Oauth2ClientServiceBase;
 use League\OAuth2\Client\Provider\GenericProvider;
 use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Token\AccessTokenInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -97,10 +98,10 @@ abstract class Oauth2ClientGrantServiceBase extends Oauth2ClientServiceBase impl
    *
    * @param string $clientId
    *   The client for which a provider should be created.
-   * @param \League\OAuth2\Client\Token\AccessToken $accessToken
-   *   The Access Token to be stored.
+   * @param \League\OAuth2\Client\Token\AccessTokenInterface $accessToken
+   *   The access token to be stored.
    */
-  protected function storeAccessToken($clientId, AccessToken $accessToken) {
+  protected function storeAccessToken($clientId, AccessTokenInterface $accessToken) {
     $this->state->set('oauth2_client_access_token-' . $clientId, $accessToken);
   }
 

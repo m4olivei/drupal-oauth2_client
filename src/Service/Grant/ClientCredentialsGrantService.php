@@ -17,8 +17,8 @@ class ClientCredentialsGrantService extends Oauth2ClientGrantServiceBase {
 
     try {
       $accessToken = $provider->getAccessToken('client_credentials');
-
       $this->storeAccessToken($clientId, $accessToken);
+      return $accessToken;
     }
     catch (IdentityProviderException $e) {
       // Failed to get the access token.

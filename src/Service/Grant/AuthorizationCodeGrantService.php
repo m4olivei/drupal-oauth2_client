@@ -78,8 +78,8 @@ class AuthorizationCodeGrantService extends Oauth2ClientGrantServiceBase {
         $accessToken = $provider->getAccessToken('authorization_code', [
           'code' => $this->currentRequest->get('code'),
         ]);
-
         $this->storeAccessToken($clientId, $accessToken);
+        return $accessToken;
       }
       catch (IdentityProviderException $e) {
         watchdog_exception('OAuth2 Client', $e);
